@@ -1,0 +1,51 @@
+name: Deploy Laravel + Vite App to FTP
+
+on:
+  push:
+    branches:
+      - main  # Pokreće se kada pushuješ na main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2  # Podesi prema verziji koju koristiš
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install PHP dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Install NPM dependencies
+        run: npm install
+
+      - name: Build frontend (Vite)
+        run: npm run build
+
+      - name: Prepare deployment package
+        run: |
+          mkdir deploy
+          cp -R app bootstrap config database lang public resources routes storage artisan composer.* package.json deploy/
+          cp -R vendor deploy/vendor
+          cp -R public deploy/public
+          cp -R dist deploy/public/dist # ako build ide u dist
+          echo "⚠️ Ne zaboravi da .env fajl ide ručno na server!"
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: deploy/
+          server-dir: public_html/  #
