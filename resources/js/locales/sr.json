@@ -1,0 +1,43 @@
+{
+    "navLinks": {
+        "home": "Početna",
+        "apartmans": "Apartmani",
+        "benefits": "Beneficije",
+        "community": "Zajednica"
+    },
+    "slider1": {
+        "sliderTitle": "Apartmani Dream Palace – Luksuzan boravak u srcu Beograda",
+        "buttonText": "Pogledaj Apartmane"
+    },
+    "slider2": {
+        "sliderTitle": "Rezervišite svoj boravak već danas i doživite Beograd na pravi način.",
+        "buttonText": "Pogledaj ponude"
+    },
+    "sliderTitle2": "Apartmani Dream Palace – Luksuzan boravak u srcu Beograda",
+    "sliderTitle3": "Apartmani Dream Palace – Luksuzan boravak u srcu Beograda",
+    "apartmans": "Apartmani",
+    "receptions": "Recepcije",
+    "guests": "Gosti",
+    "rating": "Ocena",
+    "bookDirect": "Rezervišite Direktno i Uštedite",
+    "saveUpTo": "uštedite do 30 evra dnevno",
+    "wifi": "Besplatan Wifi",
+    "wifiDesc": "Zagarantovano na svim lokacijama",
+    "water": "Besplatna voda 0.7L, čaj i kafa",
+    "waterDesc": "Tokom vašeg boravka",
+    "upgrade": "Nadogradnja apartmana",
+    "upgradeDesc": "U zavisnosti od dostupnosti",
+    "late": "Kasna odjava",
+    "lateDesc": "U zavisnosti od dostupnosti",
+    "charity": "Donacija Dominic humanitarnoj organizaciji",
+    "charityDesc": "Podržavamo decu svih uzrasta sa delom svake direktne rezervacije.",
+    "editionTitle": "DreamPlace IZDANJE",
+    "editionSubtitle": "Naša nova četvrta lokacija je OTVORENA",
+    "editionHeader": "Novo poglavlje u Dominic zajednici",
+    "editionText1": "Dominic izdanje je spremno da se predstavi, skrojeno baš za vas.",
+    "editionText2": "Sa deset savršeno pozicioniranih jedinica... najvišim standardima ugostiteljstva",
+    "editionText3": "Otvoreno u avgustu 2021... budite među prvima koji će se prijaviti!",
+    "bookNow": "Rezerviši sada",
+    "location": "Beograd -",
+    "learnMore": "Saznaj više"
+}

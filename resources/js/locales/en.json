@@ -1,0 +1,42 @@
+{
+    "navLinks": {
+        "apartmans": "Apartmans",
+        "home": "Home",
+        "benefits": "Benefits",
+        "community": "Community"
+    },
+    "slider1": {
+        "sliderTitle": "Dream Palace Apartments - Luxurious stay in the heart of Belgrade",
+        "buttonText": "Explore the Offer"
+    },
+    "slider2": {
+        "sliderTitle": "Book your stay today and experience Belgrade the right way.",
+        "buttonText": "Explore the Offer"
+    },
+    "sliderTitle": "This is a title over the image",
+    "apartmans": "Apartments",
+    "receptions": "Receptions",
+    "guests": "Guests",
+    "rating": "Rating",
+    "bookDirect": "Book Direct & Save",
+    "saveUpTo": "save up to 30 eur per day",
+    "wifi": "Free Wifi",
+    "wifiDesc": "Guaranteed at all locations",
+    "water": "Free 0.7L Water, Tea & Coffee",
+    "waterDesc": "During your stay",
+    "upgrade": "Upgrade Suites",
+    "upgradeDesc": "Upon Availability",
+    "late": "Stay Late",
+    "lateDesc": "Upon Availability",
+    "charity": "Contribution in Dominic charity",
+    "charityDesc": "We Support Children Of All Ages With a Small Amount of All Direct Reservation.",
+    "editionTitle": "DreamPlace EDITION",
+    "editionSubtitle": "Our new fourth location is OPEN",
+    "editionHeader": "New chapter in Dominic Community",
+    "editionText1": "Dominic Edition is ready to introduce itself to you, tailored just for you.",
+    "editionText2": "With ten perfectly situated units... highest standards of hospitality",
+    "editionText3": "Newly opened in August 2021... be among the first ones to check in!",
+    "bookNow": "Book now",
+    "location": "Belgrade -",
+    "learnMore": "Learn more"
+}
