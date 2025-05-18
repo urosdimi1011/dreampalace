@@ -33,12 +33,32 @@ jobs:
         run: npm run build
 
       - name: Prepare deployment package
+        shell: bash
         run: |
-          mkdir deploy
-          cp -R app bootstrap config database lang public resources routes storage artisan composer.* package.json deploy/
-          cp -R vendor deploy/vendor
-          cp -R public deploy/public
-          cp -R dist deploy/public/dist # ako build ide u dist
+          mkdir -p deploy
+
+          # Lista Laravel foldera koje kopiramo ako postoje
+          for dir in app bootstrap config database lang public resources routes storage; do
+            if [ -d "$dir" ]; then
+              cp -R "$dir" deploy/
+            fi
+          done
+
+          # Pojedinačni fajlovi
+          cp artisan deploy/
+          cp composer.* package.json deploy/ 2>/dev/null || true
+
+          # Vendor folder ako postoji
+          if [ -d vendor ]; then
+            cp -R vendor deploy/vendor
+          fi
+
+          # dist folder od Vite-a ako postoji
+          if [ -d dist ]; then
+            mkdir -p deploy/public
+            cp -R dist deploy/public/dist
+          fi
+
           echo "⚠️ Ne zaboravi da .env fajl ide ručno na server!"
 
       - name: Deploy via FTP
