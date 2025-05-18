@@ -3,7 +3,7 @@ name: Deploy Laravel + Vite App to FTP
 on:
   push:
     branches:
-      - main  # Pokreće se kada pushuješ na main
+      - main
 
 jobs:
   build-and-deploy:
@@ -16,7 +16,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2  # Podesi prema verziji koju koristiš
+          php-version: 8.2
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -33,39 +33,40 @@ jobs:
         run: npm run build
 
       - name: Prepare deployment package
-        shell: bash
         run: |
-          mkdir -p deploy
+          mkdir deploy
 
-          # Lista Laravel foldera koje kopiramo ako postoje
-          for dir in app bootstrap config database lang public resources routes storage; do
+          for dir in app bootstrap config database public resources routes storage; do
             if [ -d "$dir" ]; then
               cp -R "$dir" deploy/
             fi
           done
 
-          # Pojedinačni fajlovi
           cp artisan deploy/
           cp composer.* package.json deploy/ 2>/dev/null || true
 
-          # Vendor folder ako postoji
-          if [ -d vendor ]; then
-            cp -R vendor deploy/vendor
-          fi
-
-          # dist folder od Vite-a ako postoji
+          # Ako postoji build u dist/, kopiraj ga u public/
           if [ -d dist ]; then
-            mkdir -p deploy/public
-            cp -R dist deploy/public/dist
+            mkdir -p deploy/public/dist
+            cp -R dist/* deploy/public/dist/
           fi
 
-          echo "⚠️ Ne zaboravi da .env fajl ide ručno na server!"
+          echo "⚠️ .env fajl ide ručno na server!"
 
-      - name: Deploy via FTP
+      - name: Create ZIP for FTP upload
+        run: |
+          cd deploy
+          zip -r ../deploy.zip .
+          cd ..
+
+      - name: Upload ZIP to server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: deploy/
-          server-dir: public_html/  #
+          local-dir: ./
+          server-dir: public_html/
+          exclude: |
+            **/*
+            !deploy.zip
